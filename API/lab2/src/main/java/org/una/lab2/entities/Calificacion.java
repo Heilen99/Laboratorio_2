@@ -5,6 +5,7 @@
  */
 package org.una.lab2.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Calificacion {
+public class Calificacion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,4 +56,5 @@ public class Calificacion {
     public void prePersist() {
         fechaRegistro = new Date();
     }
+    
 }

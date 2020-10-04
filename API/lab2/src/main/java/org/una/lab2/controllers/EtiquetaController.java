@@ -16,11 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.una.lab2.dto.EtiquetaDTO;
-import org.una.lab2.dto.UsuarioDTO;
 import org.una.lab2.entities.Etiqueta;
-import org.una.lab2.entities.Usuario;
 import org.una.lab2.services.IEtiquetaService;
-import org.una.lab2.services.IUsuarioService;
 import org.una.lab2.utils.MapperUtils;
 
 /**

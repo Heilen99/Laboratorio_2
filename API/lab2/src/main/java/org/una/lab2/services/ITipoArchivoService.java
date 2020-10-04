@@ -7,17 +7,17 @@ package org.una.lab2.services;
 
 import java.util.List;
 import java.util.Optional;
-import org.una.lab2.entities.TiposArchivo;
+import org.una.lab2.entities.TipoArchivo;
 import org.una.lab2.entities.Usuario;
 
 /**
  *
  * @author Diana Acuña
  */
-public interface ITiposArchivoService {
+public interface ITipoArchivoService {
 
-    public Optional<List<TiposArchivo>> findAll();
+    public Optional<List<TipoArchivo>> findAll();
 
-    public Optional<TiposArchivo> findById(Long id);
+    public Optional<TipoArchivo> findById(Long id);
 
 }

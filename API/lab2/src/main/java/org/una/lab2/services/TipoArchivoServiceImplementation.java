@@ -10,8 +10,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.una.lab2.entities.TiposArchivo;
-import org.una.lab2.repositories.ITiposArchivoRepository;
+import org.una.lab2.entities.TipoArchivo;
+import org.una.lab2.repositories.ITipoArchivoRepository;
 
 
 /**
@@ -19,19 +19,19 @@ import org.una.lab2.repositories.ITiposArchivoRepository;
  * @author Diana Acuña
  */
 @Service
-public class TiposArchivoServiceImplementation implements ITiposArchivoService{
+public class TipoArchivoServiceImplementation implements ITipoArchivoService{
      @Autowired
-    private ITiposArchivoRepository tiposArchivoRepository;
+    private ITipoArchivoRepository tiposArchivoRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<List<TiposArchivo>> findAll() {
+    public Optional<List<TipoArchivo>> findAll() {
         return Optional.ofNullable(tiposArchivoRepository.findAll());
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<TiposArchivo> findById(Long id) {
+    public Optional<TipoArchivo> findById(Long id) {
         return tiposArchivoRepository.findById(id);
     }
 }

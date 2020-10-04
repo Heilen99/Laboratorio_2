@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.una.lab2.dto.TiposArchivoDTO;
-import org.una.lab2.entities.TiposArchivo;
-import org.una.lab2.services.ITiposArchivoService;
+import org.una.lab2.dto.TipoArchivoDTO;
+import org.una.lab2.entities.TipoArchivo;
 import org.una.lab2.utils.MapperUtils;
+import org.una.lab2.services.ITipoArchivoService;
 
 /**
  *
@@ -26,18 +26,18 @@ import org.una.lab2.utils.MapperUtils;
  */
 @RestController
 @RequestMapping("/tiposarchivos")
-public class TiposArchivoController {
+public class TipoArchivoController {
 
     @Autowired
-    private ITiposArchivoService tiposArchivoService;
+    private ITipoArchivoService tiposArchivoService;
 
     @GetMapping()
     public @ResponseBody
     ResponseEntity<?> findAll() {
         try {
-            Optional<List<TiposArchivo>> result =  tiposArchivoService.findAll();
+            Optional<List<TipoArchivo>> result =  tiposArchivoService.findAll();
             if (result.isPresent()) {
-                List<TiposArchivoDTO> tiposArchivoDTO = MapperUtils.DtoListFromEntityList(result.get(), TiposArchivoDTO.class);
+                List<TipoArchivoDTO> tiposArchivoDTO = MapperUtils.DtoListFromEntityList(result.get(), TipoArchivoDTO.class);
                 return new ResponseEntity<>(tiposArchivoDTO, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -50,9 +50,9 @@ public class TiposArchivoController {
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable(value = "id") Long id) {
         try {
-            Optional<TiposArchivo> tipoArchivoFound = tiposArchivoService.findById(id);
+            Optional<TipoArchivo> tipoArchivoFound = tiposArchivoService.findById(id);
             if (tipoArchivoFound.isPresent()) {
-                TiposArchivoDTO tiposArchivoDTO = MapperUtils.DtoFromEntity(tipoArchivoFound.get(), TiposArchivoDTO.class);
+                TipoArchivoDTO tiposArchivoDTO = MapperUtils.DtoFromEntity(tipoArchivoFound.get(), TipoArchivoDTO.class);
                 return new ResponseEntity<>(tiposArchivoDTO, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);

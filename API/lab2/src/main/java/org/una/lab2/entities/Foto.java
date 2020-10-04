@@ -5,8 +5,8 @@
  */
 package org.una.lab2.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,13 +18,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -39,7 +35,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Foto {
+public class Foto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,22 +61,20 @@ public class Foto {
 
     @ManyToOne
     @JoinColumn(name = "Usuarios_Id")
-    private Usuario usuarios;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "foto")
-    private List<Calificacion> calificacion = new ArrayList<>();
+    private Usuario usuario;
     
-    /*@ManyToOne
-    @JoinColumn(name = "TipoArchivo_Id")
+    @ManyToOne
+    @JoinColumn(name = "Tipos_Archivos_Id")
     private TipoArchivo tipoArchivo;
 
-   
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "foto")
+    private List<Calificacion> calificaciones = new ArrayList<>();
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "Foto")
-    private List<Reaccion> reaccion = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "foto")
+    private List<Reaccion> reacciones = new ArrayList<>();
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "Foto")
-    private List<Etiqueta> etiqueta = new ArrayList<>();*/
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "foto")
+    private List<Etiqueta> etiquetas = new ArrayList<>();
 
     private static final long serialVersionUID = 1L;
 

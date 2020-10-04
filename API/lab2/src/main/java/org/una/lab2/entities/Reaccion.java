@@ -15,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,6 +36,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Reaccion implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,17 +46,15 @@ public class Reaccion implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaRegistro;
 
-   // @ManyToOne
-    //@JoinColumn(name = "Fotos_Id")
-    //private Foto foto;
-    
+    @ManyToOne
+    @JoinColumn(name = "Fotos_Id")
+    private Foto foto;
+
     private static final long serialVersionUID = 1L;
 
     @PrePersist
     public void prePersist() {
         fechaRegistro = new Date();
-        
     }
-    
-    
+
 }

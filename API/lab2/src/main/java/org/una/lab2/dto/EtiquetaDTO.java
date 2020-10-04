@@ -5,10 +5,19 @@
  */
 package org.una.lab2.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 /**
  *
  * @author Diana Acuña
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor 
+@ToString
 public class EtiquetaDTO {
 
     private Long id;

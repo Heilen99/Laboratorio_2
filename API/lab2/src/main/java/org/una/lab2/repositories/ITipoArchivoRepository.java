@@ -6,12 +6,12 @@
 package org.una.lab2.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.una.lab2.entities.TiposArchivo;
+import org.una.lab2.entities.TipoArchivo;
 
 /**
  *
  * @author Diana Acuña
  */
-public interface ITiposArchivoRepository extends JpaRepository<TiposArchivo, Long> {
+public interface ITipoArchivoRepository extends JpaRepository<TipoArchivo, Long> {
     
 }

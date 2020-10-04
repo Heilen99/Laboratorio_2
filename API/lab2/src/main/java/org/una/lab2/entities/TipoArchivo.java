@@ -6,11 +6,15 @@
 package org.una.lab2.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,13 +31,16 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class TiposArchivo implements Serializable {
+public class TipoArchivo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Tipo_Archivo", length = 45)
     private String tipoArchivo;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoArchivo")
+    private List<Foto> fotos = new ArrayList<>();
     
     private static final long serialVersionUID = 1L;
     
