@@ -47,7 +47,7 @@ public class Reaccion implements Serializable {
     private Date fechaRegistro;
 
     @ManyToOne
-    @JoinColumn(name = "Fotos_Id")
+    @JoinColumn(name = "Lab2_Fotos")
     private Foto foto;
 
     private static final long serialVersionUID = 1L;

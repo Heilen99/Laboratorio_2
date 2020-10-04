@@ -38,7 +38,7 @@ public class Etiqueta implements Serializable {
     private String nombre;
     
     @ManyToOne
-    @JoinColumn(name = "Fotos_Id")
+    @JoinColumn(name = "Lab2_Fotos")
     private Foto foto;
     
     private static final long serialVersionUID = 1L;

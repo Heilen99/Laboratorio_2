@@ -60,11 +60,11 @@ public class Foto implements Serializable {
     private int tipo_Privacidad;
 
     @ManyToOne
-    @JoinColumn(name = "Usuarios_Id")
+    @JoinColumn(name = "Lab2_Usuarios")
     private Usuario usuario;
     
     @ManyToOne
-    @JoinColumn(name = "Tipos_Archivos_Id")
+    @JoinColumn(name = "Lab2_TiposArchivos")
     private TipoArchivo tipoArchivo;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "foto")
