@@ -66,7 +66,7 @@ public class Usuario implements Serializable {
     private Date fechaModificacion;
 
     @ManyToOne
-    @JoinColumn(name = "Tipos_Usuarios_Id")
+    @JoinColumn(name = "Lab2_TiposUsuarios")
     private TipoUsuario tipoUsuario;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")

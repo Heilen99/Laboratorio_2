@@ -13,6 +13,5 @@ import org.una.lab2.entities.Foto;
  * @author Kender Porras
  */
 public interface IFotoRepository extends JpaRepository<Foto, Long> {
-
     
 }
