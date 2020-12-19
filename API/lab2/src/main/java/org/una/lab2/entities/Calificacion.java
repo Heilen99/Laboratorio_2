@@ -6,10 +6,7 @@
 package org.una.lab2.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,57 +27,34 @@ import lombok.ToString;
 
 /**
  *
- * @author Heilen
+ * @author Kender Porras
  */
 @Entity
-@Table(name = "Lab2_Usuarios")
+@Table(name = "Lab2_Calificaciones")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Usuario implements Serializable {
+public class Calificacion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "Nombre_Usuario", length = 50)
-    private String nombreUsuario;
-
-    @Column(name = "Contraseña", length = 50)
-    private String contraseña;
-    
-    @Column(name = "Correo_Electronico", length = 50)
-    private String correoElectronico;
 
     @Column(name = "Fecha_Registro", updatable = false)
     @Temporal(TemporalType.DATE)
     @Setter(AccessLevel.NONE)
     private Date fechaRegistro;
 
-    @Column(name = "Fecha_Modificacion")
-    @Setter(AccessLevel.NONE)
-    @Temporal(TemporalType.DATE)
-    private Date fechaModificacion;
-
     @ManyToOne
-    @JoinColumn(name = "Lab2_TiposUsuarios")
-    private TipoUsuario tipoUsuario;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<Foto> fotos = new ArrayList<>();
+    @JoinColumn(name = "Lab2_Fotos")
+    private Foto foto;
 
     private static final long serialVersionUID = 1L;
 
     @PrePersist
     public void prePersist() {
         fechaRegistro = new Date();
-        fechaModificacion = new Date();
     }
-
-    @PreUpdate
-    public void preUpdate() {
-        fechaModificacion = new Date();
-    }
-
+    
 }

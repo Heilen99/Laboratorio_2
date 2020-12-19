@@ -15,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,34 +23,25 @@ import lombok.ToString;
 
 /**
  *
- * @author Heilen
+ * @author Diana Acuña
  */
 @Entity
-@Table(name = "Lab2_TiposUsuarios")
+@Table(name = "Lab2_TiposArchivos")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class TipoUsuario implements Serializable {
-
+public class TipoArchivo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "Tipo_Usuario", length = 20)
-    private String tipoUsuario;
-
-    @Column(name = "Estado")
-    private boolean estado;
+    @Column(name = "Tipo_Archivo", length = 45)
+    private String tipoArchivo;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoUsuario")
-    private List<Usuario> usuarios = new ArrayList<>();
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoArchivo")
+    private List<Foto> fotos = new ArrayList<>();
+    
     private static final long serialVersionUID = 1L;
-
-    @PrePersist
-    public void prePersist() {
-        estado = true;
-    }
-
+    
 }
